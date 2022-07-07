@@ -5,6 +5,8 @@ import 'package:loginapp/app/modules/home/views/home_view.dart';
 import 'package:loginapp/app/modules/loginPage/bindings/login_page_binding.dart';
 import 'package:loginapp/app/modules/singUpPage/bindings/sing_up_page_binding.dart';
 import 'package:loginapp/app/modules/singUpPage/views/sing_up_page_view.dart';
+import 'package:loginapp/app/modules/upadatePage/bindings/upadate_page_binding.dart';
+import 'package:loginapp/app/modules/upadatePage/views/upadate.dart';
 
 import '../modules/loginPage/views/login_page_view.dart';
 
@@ -30,6 +32,11 @@ class AppPages {
       name: _Paths.SING_UP_PAGE,
       page: () => SingUpPageView(),
       binding: SingUpPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.UPADATE_PAGE,
+      page: () => UpadatePageView(),
+      binding: UpadatePageBinding(),
     ),
   ];
 }

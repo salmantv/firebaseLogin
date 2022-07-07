@@ -20,7 +20,6 @@ class HomeController extends GetxController {
 
   User? user = FirebaseAuth.instance.currentUser;
   UserModel user_model = UserModel();
-
   Future<void> logout() async {
     await FirebaseAuth.instance.signOut();
     Get.offAll(SignupPage());

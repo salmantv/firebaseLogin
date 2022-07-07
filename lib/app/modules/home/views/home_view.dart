@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:loginapp/app/modules/upadatePage/controllers/upadate_page_controller.dart';
+import 'package:loginapp/app/modules/upadatePage/views/upadate.dart';
 
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  final homectr = Get.put(HomeController());
+  final homecontroller1 = Get.put(HomeController());
+  final upadatectroller = Get.put(UpadatePageController());
 
   @override
   Widget build(BuildContext context) {
+    homecontroller1.onInit();
     return Scaffold(
         body: Container(
       child: SafeArea(
@@ -43,56 +47,73 @@ class HomeView extends GetView<HomeController> {
                 child: Container(
                   width: 400,
                   height: 600,
-                  child: ListView(
-                    children: [
-                      Card(
-                        child: ListTile(
-                          leading: Icon(
-                            Icons.person,
-                            size: 28,
+                  child: InkWell(
+                    onTap: () async {
+                      upadatectroller.onInit();
+                      Get.to(UpadatePageView());
+                    },
+                    child: ListView(
+                      children: [
+                        Card(
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.person,
+                              size: 28,
+                            ),
+                            title: GetBuilder<HomeController>(
+                              builder: (GetxController controller) {
+                                return Text(
+                                    "${homecontroller1.user_model.name}");
+                              },
+                            ),
+                            trailing: Icon(Icons.arrow_forward_ios_sharp),
                           ),
-                          title: GetBuilder<HomeController>(
-                            builder: (GetxController controller) {
-                              return Text("${homectr.user_model.name}");
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Card(
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.email,
+                              size: 28,
+                            ),
+                            title: GetBuilder<HomeController>(
+                              builder: (GetxController controller) {
+                                return Text(
+                                    "${homecontroller1.user_model.email}");
+                              },
+                            ),
+                            trailing: Icon(Icons.arrow_forward_ios_sharp),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Card(
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.phone,
+                            ),
+                            title: GetBuilder<HomeController>(
+                              builder: (GetxController controller) {
+                                return Text(
+                                    "${homecontroller1.user_model.phone}");
+                              },
+                            ),
+                            trailing: Icon(Icons.arrow_forward_ios_sharp),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 190,
+                        ),
+                        ElevatedButton(
+                            onPressed: () {
+                              homecontroller1.logout();
                             },
-                          ),
-                          trailing: Icon(Icons.arrow_forward_ios_sharp),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Card(
-                        child: ListTile(
-                          leading: Icon(
-                            Icons.email,
-                            size: 28,
-                          ),
-                          title: Text("${homectr.user_model.email}"),
-                          trailing: Icon(Icons.arrow_forward_ios_sharp),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Card(
-                        child: ListTile(
-                          leading: Icon(
-                            Icons.phone,
-                          ),
-                          title: Text("${homectr.user_model.phone}"),
-                          trailing: Icon(Icons.arrow_forward_ios_sharp),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 190,
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            homectr.logout();
-                          },
-                          child: Text("SingOut"))
-                    ],
+                            child: Text("SingOut"))
+                      ],
+                    ),
                   ),
                 ),
               )
