@@ -19,7 +19,7 @@ class SingUpPageView extends GetView<SingUpPageController> {
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.fromLTRB(15, 110, 0, 0),
-                    child: Text("Login",
+                    child: Text("Sigup",
                         style: TextStyle(
                             fontSize: 40, fontWeight: FontWeight.bold)),
                   )
@@ -94,23 +94,24 @@ class SingUpPageView extends GetView<SingUpPageController> {
                   SizedBox(
                     height: 80,
                   ),
-                  Container(
-                    height: 40,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(20),
-                      shadowColor: Color.fromARGB(255, 230, 230, 230),
-                      color: Colors.black,
-                      elevation: 7,
-                      child: GestureDetector(
-                          onTap: () async {
-                            singUp.firBaseAuth();
-                          },
-                          child: const Center(
-                              child: Text('SIGNUP',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Montserrat')))),
+                  InkWell(
+                    onTap: () async {
+                      await singUp.firBaseAuth();
+                    },
+                    child: Container(
+                      height: 40,
+                      child: Material(
+                        borderRadius: BorderRadius.circular(20),
+                        shadowColor: Color.fromARGB(255, 230, 230, 230),
+                        color: Colors.black,
+                        elevation: 7,
+                        child: const Center(
+                            child: Text('SIGNUP',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Montserrat'))),
+                      ),
                     ),
                   ),
                   const SizedBox(

@@ -8,6 +8,10 @@ abstract class Routes {
   static const LOGIN_PAGE = _Paths.LOGIN_PAGE;
   static const SING_UP_PAGE = _Paths.SING_UP_PAGE;
   static const UPADATE_PAGE = _Paths.UPADATE_PAGE;
+  static const BUTTOM_NAVAGTION = _Paths.BUTTOM_NAVAGTION;
+  static const ADDINDG_DATA = _Paths.ADDINDG_DATA;
+  static const CONDROLL_ROOM = _Paths.CONDROLL_ROOM;
+  static const AUTHINCATION = _Paths.AUTHINCATION;
 }
 
 abstract class _Paths {
@@ -15,4 +19,8 @@ abstract class _Paths {
   static const LOGIN_PAGE = '/login-page';
   static const SING_UP_PAGE = '/sing-up-page';
   static const UPADATE_PAGE = '/upadate-page';
+  static const BUTTOM_NAVAGTION = '/buttom-navagtion';
+  static const ADDINDG_DATA = '/addindg-data';
+  static const CONDROLL_ROOM = '/condroll-room';
+  static const AUTHINCATION = '/authincation';
 }

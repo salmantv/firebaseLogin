@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loginapp/app/modules/home/controllers/home_controller.dart';
 import 'package:loginapp/app/modules/loginPage/controllers/login_page_controller.dart';
 import 'package:loginapp/app/modules/singUpPage/views/sing_up_page_view.dart';
 
@@ -9,6 +10,7 @@ class SignupPage extends StatelessWidget {
   SignupPage({Key? key}) : super(key: key);
 
   final login = Get.put(LoginPageController());
+  // final home = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class SignupPage extends StatelessWidget {
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.fromLTRB(15, 110, 0, 0),
-                  child: Text("SignUp",
+                  child: Text("Login",
                       style:
                           TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
                 )
@@ -79,19 +81,34 @@ class SignupPage extends StatelessWidget {
                 SizedBox(
                   height: 40,
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      login.fireBaseAuth();
-                    },
-                    child: Text("SingUp")),
                 const SizedBox(
                   height: 15,
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    await login.fireBaseAuth();
+                  },
+                  child: Container(
+                    height: 40,
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20),
+                      shadowColor: Color.fromARGB(255, 230, 230, 230),
+                      color: Colors.black,
+                      elevation: 7,
+                      child: const Center(
+                          child: Text('LOGIN',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Montserrat'))),
+                    ),
+                  ),
                 ),
                 TextButton(
                     onPressed: () {
                       Get.to(SingUpPageView());
                     },
-                    child: Text('Login'))
+                    child: Text('SINGUP'))
               ],
             ),
           )

@@ -13,7 +13,7 @@ class UserModel {
         name: map["name"],
         phone: map["phone"],
         uid: map["uid"],
-        imageUrl: map["imageUrl"]);
+        imageUrl: map["image"]);
   }
 
   Map<String, dynamic> toMap() {

@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loginapp/app/data/ueerModel.dart';
-import 'package:loginapp/app/modules/home/views/home_view.dart';
+import 'package:loginapp/app/modules/buttomNavagtion/views/controll_room_view.dart';
 
 class SingUpPageController extends GetxController {
   final TextEditingController emailController = TextEditingController();
@@ -11,18 +11,24 @@ class SingUpPageController extends GetxController {
   final TextEditingController name = TextEditingController();
   final TextEditingController password = TextEditingController();
   final FirebaseAuth auth = FirebaseAuth.instance;
-  // final home = Get.put(HomeController());
 
   Future firBaseAuth() async {
+    if (emailController.text == "" ||
+        phoneNumber.text == "" ||
+        name.text == "" ||
+        password.text == "") {
+      Get.snackbar("Somthing Worong", "Please fill up All filed");
+      return;
+    }
+
     await auth
         .createUserWithEmailAndPassword(
             email: emailController.text, password: password.text)
         .then((value) {
       dataSendingfirbase();
+      Get.snackbar("", "SingUp Succses");
     }).catchError((e) {
-      GetSnackBar(
-        message: "$e",
-      );
+      Get.snackbar("", "${e.message}", snackStyle: SnackStyle.FLOATING);
     });
   }
 
@@ -30,7 +36,7 @@ class SingUpPageController extends GetxController {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     User? user = auth.currentUser;
     UserModel usermodel = UserModel();
-    if (user!.email == null) {
+    if (user!.email == "") {
       return;
     }
     usermodel.email = user.email;
@@ -42,7 +48,6 @@ class SingUpPageController extends GetxController {
         .collection("users")
         .doc(user.uid)
         .set(usermodel.toMap());
-    // home.onInit();
-    Get.offAll(HomeView());
+    await Get.off(Controll());
   }
 }
