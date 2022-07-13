@@ -31,6 +31,6 @@ class HomeController extends GetxController {
 
   Future<void> logout() async {
     await FirebaseAuth.instance.signOut();
-    Get.off(SignupPage());
+    Get.offAll(SignupPage());
   }
 }

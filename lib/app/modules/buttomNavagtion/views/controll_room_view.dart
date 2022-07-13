@@ -68,7 +68,7 @@ class Controll extends StatelessWidget {
                     var pricetext = itemcontroller.pricecontroller.text.trim();
                     await itemcontroller.addItem(
                         name: prodectext, price: pricetext);
-                    Navigator.of(context).pop();
+                    Get.back();
                   },
                   child: Text("add"))
             ],

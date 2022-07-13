@@ -6,12 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:loginapp/app/modules/buttomNavagtion/views/controll_room_view.dart';
 
 import '../../home/controllers/home_controller.dart';
 
 class UpadatePageController extends GetxController {
   User? user = FirebaseAuth.instance.currentUser;
   final homecontroller2 = Get.put(HomeController());
+  @override
+  void onReady() {
+    super.onReady();
+  }
 
   File? image;
   String? imagurl;
@@ -26,8 +31,8 @@ class UpadatePageController extends GetxController {
         .collection("users")
         .doc(user!.uid)
         .update({"phone": phoneNumber.text, "name": name.text});
-    update();
     await homecontroller2.gatdate();
+    update();
   }
 
   Future uplodeProfile() async {
@@ -43,6 +48,8 @@ class UpadatePageController extends GetxController {
     UploadTask uploadTask = firebaseStorageRef.putFile(image!);
     var taskSnapshot = await uploadTask.whenComplete(() {
       Get.snackbar("", "Profile added");
+      dataUpdateing();
+      Get.off(Controll());
     });
     final urlDownloded = await taskSnapshot.ref.getDownloadURL();
     imagurl = urlDownloded;

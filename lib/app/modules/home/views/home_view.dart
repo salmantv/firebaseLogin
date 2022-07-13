@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:loginapp/app/modules/buttomNavagtion/views/controll_room_view.dart';
 import 'package:loginapp/app/modules/upadatePage/views/upadate.dart';
 
 import '../controllers/home_controller.dart';

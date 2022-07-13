@@ -21,9 +21,6 @@ class AuthincationView extends GetView<AuthincationController> {
                 child: CircularProgressIndicator(),
               );
             } else if (users.hasData) {
-              if (users.hasData == true) {
-                return SignupPage();
-              }
               return Controll();
             } else if (users.hasError) {
               return SignupPage();

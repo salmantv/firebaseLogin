@@ -8,16 +8,16 @@ import '../controllers/buttom_navagtion_controller.dart';
 class ButtonnavigationView extends StatelessWidget {
   ButtonnavigationView({Key? key}) : super(key: key);
   final homectroller = Get.put(HomeController());
+  final getcontroller = Get.put(ButtonnavigationController());
 
   @override
   Widget build(BuildContext context) {
-    final getcontroller = Get.put(ButtonnavigationController());
-    homectroller.gatdate();
+    // homectroller.gatdate();
 
     return SizedBox(
       height: 70,
       child: GetBuilder<ButtonnavigationController>(
-        builder: (GetxController controller) {
+        builder: (controller) {
           return BottomNavigationBar(
               backgroundColor: Colors.white,
               type: BottomNavigationBarType.fixed,

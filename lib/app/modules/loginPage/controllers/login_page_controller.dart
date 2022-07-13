@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:loginapp/app/modules/Authincation/controllers/authincation_controller.dart';
 import 'package:loginapp/app/modules/buttomNavagtion/views/controll_room_view.dart';
 
 class LoginPageController extends GetxController {
@@ -18,7 +17,7 @@ class LoginPageController extends GetxController {
         .signInWithEmailAndPassword(
             email: emailController.text, password: passwordController.text)
         .then((value) {
-      Get.off(Controll());
+      Get.offAll(Controll());
       Get.snackbar("", "Login Succses");
     }).catchError((e) {
       Get.snackbar("", "${e.message}");

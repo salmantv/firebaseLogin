@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loginapp/app/data/ueerModel.dart';
+import 'package:loginapp/app/modules/Authincation/views/authincation_view.dart';
 import 'package:loginapp/app/modules/buttomNavagtion/views/controll_room_view.dart';
 
 class SingUpPageController extends GetxController {
@@ -48,6 +49,6 @@ class SingUpPageController extends GetxController {
         .collection("users")
         .doc(user.uid)
         .set(usermodel.toMap());
-    await Get.off(Controll());
+    Get.offAll(Controll());
   }
 }

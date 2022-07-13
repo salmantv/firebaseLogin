@@ -1,7 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.loginapp">
      <uses-permission android:name="android.permission.INTERNET" />
-
    <application
         android:label="loginapp"
         android:name="${applicationName}"
